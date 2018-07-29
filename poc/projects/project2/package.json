@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "commander": "^2.16.0",
+    "find": "^0.2.9"
+  }
+}
