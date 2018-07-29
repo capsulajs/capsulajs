@@ -1,9 +1,32 @@
 {
+  "bin": {
+    "capsula": "./capsulajs.js"
+  },
   "dependencies": {
     "commander": "^2.16.0",
     "express": "^4.16.3",
     "find": "^0.2.9",
     "http-proxy-middleware": "^0.18.0",
     "http-server": "^0.11.1"
-  }
+  },
+  "name": "@capsulajs/capsulajs",
+  "version": "0.0.1",
+  "description": "Distributed frontend development",
+  "main": "capsulajs.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "microservices",
+    "micro-services",
+    "cli",
+    "tools",
+    "micro-frontends"
+  ],
+  "author": [
+    "Stephane Benayoun (https://github.com/stephanebenayoun)",
+    "Idan Levin (https://github.com/idanilt)"
+  ],
+  "license": "MIT"
 }
