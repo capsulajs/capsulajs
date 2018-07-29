@@ -1,5 +1,6 @@
 const find = require('find');
 const { exec } = require('child_process');
+const path = require('path');
 
 const commandCallback = (error, stdout, stderr) => {
   if (stderr !== null) {
@@ -18,10 +19,10 @@ const findProjects = (directory) => {
   return find.fileSync(/package.json/, directory)
     .filter(file => !file.match('node_modules'))
     .map((file, i) => {
-      const path = file.split('package.json')[0];
-      const name = path.split('\\');
+      const prjPath = file.split('package.json')[0];
+      const name = prjPath.split(path.sep);
       return {
-        path: path,
+        path: prjPath,
         name: name[name.length - 2],
         port: 8580 + i,
       };
