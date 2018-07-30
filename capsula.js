@@ -1,9 +1,9 @@
 //@flow
-import { CapsulaJS } from "./api/CapsulaJS";
-import { commandCallback, findProjects, proxyOptions } from "./utils";
-import express from "express";
+import { CapsulaJS } from './api/CapsulaJS';
+import { commandCallback, findProjects, proxyOptions } from './utils';
+import express from 'express';
 import { exec }from 'child_process';
-import proxy from "http-proxy-middleware";
+import proxy from 'http-proxy-middleware';
 
 export class Capsula implements CapsulaJS {
   run(directory) {

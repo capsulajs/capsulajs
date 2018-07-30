@@ -1,7 +1,7 @@
 // @flow
 import find from 'find';
 import { readFileSync } from 'fs';
-import { Project } from "./api/types";
+import { Project } from './api/types';
 
 export const commandCallback = (error: string, stdout: string, stderr: string) => {
   if (stderr !== null) {
