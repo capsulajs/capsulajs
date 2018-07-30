@@ -1,8 +1,9 @@
-const find = require('find');
-const { exec } = require('child_process');
-const path = require('path');
+// @flow
+import find from 'find';
+import path from 'path';
+import { Project } from "./api/types";
 
-const commandCallback = (error, stdout, stderr) => {
+export const commandCallback = (error: string, stdout: string, stderr: string) => {
   if (stderr !== null) {
     console.log('' + stderr);
   }
@@ -15,7 +16,12 @@ const commandCallback = (error, stdout, stderr) => {
   console.log('FINISHED');
 };
 
-const findProjects = (directory) => {
+/**
+ * Return a list of project within a specific directory
+ * @param directory
+ * @returns Project[]
+ */
+export const findProjects = (directory: string): Project[] => {
   return find.fileSync(/package.json/, directory)
     .filter(file => !file.match('node_modules'))
     .map((file, i) => {
@@ -29,7 +35,13 @@ const findProjects = (directory) => {
     });
 };
 
-const proxyOptions = (port, name) => {
+/**
+ * Provide options object that will be used to create a proxy for a specific project
+ * @param project
+ * @returns needed options to create a proxy
+ */
+export const proxyOptions = (project: Project) => {
+  const { name, port } = project;
   const url = `^/${name}`;
   return {
     target: `http://localhost:${port}`,
@@ -40,5 +52,3 @@ const proxyOptions = (port, name) => {
     },
   }
 };
-
-module.exports = { findProjects, proxyOptions, commandCallback };
