@@ -1,6 +1,6 @@
 // @flow
 import find from 'find';
-import path from 'path';
+import { readFileSync } from 'fs';
 import { Project } from "./api/types";
 
 export const commandCallback = (error: string, stdout: string, stderr: string) => {
@@ -25,11 +25,11 @@ export const findProjects = (directory: string): Project[] => {
   return find.fileSync(/package.json/, directory)
     .filter(file => !file.match('node_modules'))
     .map((file, i) => {
+      const { name } = JSON.parse(readFileSync(file));
       const prjPath = file.split('package.json')[0];
-      const name = prjPath.split(path.sep);
       return {
+        name: name || `project${i}`,
         path: prjPath,
-        name: name[name.length - 2],
         port: 8580 + i,
       };
     });
