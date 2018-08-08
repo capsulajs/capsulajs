@@ -1,0 +1,13 @@
+{
+  "name": "capsulajs",
+  "version": "1.0.0",
+  "bin": {
+    "capsula": "capsula.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "commander": "^2.17.1"
+  }
+}
