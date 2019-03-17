@@ -1,0 +1,27 @@
+{
+  "name": "@capsulajs/containers",
+  "version": "0.0.0",
+  "description": "core functionality for capsulajs",
+  "author": "Idan Levin <idan@ilt.co.il>",
+  "homepage": "https://github.com/capsulajs/capsulajs#readme",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "main": "lib/core.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/capsulajs/capsulajs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/capsulajs/capsulajs/issues"
+  },
+  "devDependencies": {
+    "@capsulajs/cli": "^0.0.0",
+    "parcel-bundler": "^1.11.0"
+  }
+}

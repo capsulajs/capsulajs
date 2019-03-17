@@ -1,0 +1,17 @@
+{
+  "name": "@capsulajs/fixture1-root",
+  "private": true,
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "fixture1": "(cd ../../ && http-server) & lerna run fixture1:start",
+    "fixture1:build": "parcel build --public-url . ./src/index.html --out-dir ../../fixture1/dist",
+    "fixture1:start": "parcel watch --public-url . ./src/index.html --out-dir ../../fixture1/dist"
+  },
+  "devDependencies": {
+    "@capsulajs/cli": "^0.0.0",
+    "@capsulajs/containers": "^0.0.0",
+    "parcel-bundler": "^1.11.0"
+  }
+}

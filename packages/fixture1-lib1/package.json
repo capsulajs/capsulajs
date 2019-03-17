@@ -1,0 +1,15 @@
+{
+  "name": "@capsulajs/fixture1-lib1",
+  "private": true,
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "fixture1:start": "capsula create",
+    "fixture1:build": "capsula create"
+  },
+  "devDependencies": {
+    "@capsulajs/cli": "^0.0.0",
+    "@capsulajs/containers": "^0.0.0"
+  }
+}
