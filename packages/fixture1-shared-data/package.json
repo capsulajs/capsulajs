@@ -1,5 +1,6 @@
 {
-  "name": "@capsulajs/fixture1-lib1",
+  "name": "@capsulajs/fixture1-shared-data",
+  "description": "Container with share data",
   "private": true,
   "version": "1.0.0",
   "main": "dist/index.js",

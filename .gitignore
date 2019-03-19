@@ -1,0 +1,11 @@
+.npmrc
+.cache
+.idea/
+node_modules/
+lib/
+doc/
+lerna-debug.log
+coverage/
+bundles/
+yarn-error.log
+/fixture1
