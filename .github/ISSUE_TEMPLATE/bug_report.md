@@ -8,13 +8,18 @@ assignees: ''
 
 ## Describe the bug
 
-A clear and concise description of what the bug is.
+A clear and concise description of the bug.
 
 ## Reproduce
 
 #### Expected behavior
 
-A test case in _**Gherkin Syntax**_ or the link to this test case.
+Test case in _**[Gherkin Syntax](https://docs.cucumber.io/gherkin/reference/)**_ or the link to this test case.
+```gherkin
+Given A great package
+When I install it
+Then I don't find any bug
+```
 
 #### Actual behavior
 
@@ -36,10 +41,13 @@ Screenshots, videos, documents, log etc.
 
 #### Environment
 
-- OS & Version: [e.g. iOS:11.10...]
-- Node version
-- Browser & Version [e.g. chrome:x..., safari:y..] if relevant
-- Package version
+| Software         | Version(s) |
+| ---------------- | ---------- |
+| Package          |
+| Node             |
+| npm/Yarn         |
+| Operating System |
+| Browser          |
 
 #### Additional context
 
