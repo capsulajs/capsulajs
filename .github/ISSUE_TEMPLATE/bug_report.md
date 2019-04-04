@@ -32,11 +32,12 @@ Sandbox, snippet, repository etc..
 
 #### Attachments
 
-Screenshots, videos, documents, localStorage and cookies data etc..
+Screenshots, videos, documents, log etc.
 
 #### Environment
 
 - OS & Version: [e.g. iOS:11.10...]
+- Node version
 - Browser & Version [e.g. chrome:x..., safari:y..] if relevant
 - Package version
 
