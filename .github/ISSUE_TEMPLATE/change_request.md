@@ -1,11 +1,3 @@
----
-name: Change Request/New Feature Request
-about: Suggest a change in exist feature or the creation of a new feature
-title: ''
-labels: 'feature'
-assignees: ''
----
-
 ## General description
 The general description of the change/feature, that will explain the core value and why it's needed.
 #### Prerequisites
@@ -41,11 +33,16 @@ List of everything to consider before writing test cases.
 <!-- 
 Describe the feature behavior the best you can using gherkin feature file 
 Link to PR or Gherkin snippet
+```gherkin
+Given A great package
+When I add a new feature
+Then I expect it to work fine
+```
 -->
 
 ## Test cases
 
-Link to the PR with test cases, that are written in _**Gherkin Syntax**_ and cover all the possible scenarios.
+Link to the PR with test cases, that are written in _**[Gherkin Syntax](https://docs.cucumber.io/gherkin/reference/)**_ and cover all the possible scenarios.
 
 ## Key Performance Indicator (KPI) Definition
 
@@ -70,6 +67,6 @@ _**Example:** reduce bundle size by X%._
 
 ## RoadMap
 
-In case there is more than one mergable point you can specify it here.
+In case there is more than one mergeable point you can specify it here.
 
 NOTICE that DoD is one unit, you CAN'T do implementation then notes then documentation etc.
