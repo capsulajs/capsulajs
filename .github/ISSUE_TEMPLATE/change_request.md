@@ -1,3 +1,11 @@
+---
+name: Change Request/New Feature Request
+about: Suggest a change in exist feature or the creation of a new feature
+title: ''
+labels: 'feature'
+assignees: ''
+---
+
 ## General description
 The general description of the change/feature, that will explain the core value and why it's needed.
 #### Prerequisites
