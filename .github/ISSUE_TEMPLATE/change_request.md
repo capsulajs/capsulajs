@@ -62,7 +62,6 @@ _**Example:** reduce bundle size by X%._
 - [ ] External dependencies have been resolved
 - [ ] API has been approved
 - [ ] Test cases have been prepared
-- [ ] Discussed with Product owner
 - [ ] Discussed with Technical lead
 
 ## Definition of Done
