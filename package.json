@@ -1,0 +1,15 @@
+{
+  "name": "@capsulajs/capsulajs",
+  "version": "0.0.1",
+  "description": "A set of utility tool to manage CapsulaJS environment",
+  "main": "lib/index.js",
+  "repository": "git@github.com:capsulajs/capsulajs.git",
+  "author": "CapsulaJS",
+  "license": "MIT",
+  "private": false,
+  "keywords": ["capsulajs"],
+  "bugs": {
+    "url": "https://github.com/capsulajs/capsulajs/issues"
+  },
+  "homepage": "https://github.com/capsulajs/capsulajs"
+}
