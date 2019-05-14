@@ -7,9 +7,24 @@
   "author": "CapsulaJS",
   "license": "MIT",
   "private": false,
-  "keywords": ["capsulajs"],
+  "keywords": [
+    "capsulajs"
+  ],
   "bugs": {
     "url": "https://github.com/capsulajs/capsulajs/issues"
   },
-  "homepage": "https://github.com/capsulajs/capsulajs"
+  "homepage": "https://github.com/capsulajs/capsulajs",
+  "scripts": {
+    "test": "jest --maxWorkers=4",
+    "build": "yarn clean && yarn build:lib",
+    "build:lib": "parcel build src/index.js --out-dir lib/",
+    "clean": "rimraf lib"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.13",
+    "jest": "^24.8.0",
+    "parcel": "^1.12.3",
+    "rimraf": "^2.6.3",
+    "ts-jest": "^24.0.2"
+  }
 }
