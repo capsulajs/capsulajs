@@ -1,0 +1,6 @@
+{
+  "name": "cmd",
+  "bin": {
+    "cmd": "./src/cli.js"
+  }
+}

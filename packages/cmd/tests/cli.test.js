@@ -25,29 +25,33 @@ describe('Capsula cli test suite 1', () => {
       if (!fs.existsSync('./node_modules/.bin')) {
         fs.mkdirSync('./node_modules/.bin');
       }
-      fs.symlinkSync('../src/cmd/cli.js', './node_modules/.bin/cmd');
+      try {
+        fs.symlinkSync('../src/cli.js', './node_modules/.bin/cmd');
+      } catch (e) {
+
+      }
     }
-    it('capsula should be found', (done) => {
+    it('cmd should be found', (done) => {
       expect.assertions(1);
-      const run = require('../src/cmd/run');
+      const run = require('../src/run');
 
       process.chdir(`${base}/tests/${fixture}`);
-      expect(() => run.runSync('capsula')).toThrowError(
-        'Command failed: capsula\nusage: capsula cmd [command] [args]\n'
+      expect(() => run.runSync('cmd')).toThrowError(
+        'Command failed: cmd\nusage: capsula cmd [command] [args]\n'
       );
 
       done();
     });
     it('When cmd contain capsula cmd should run properly', () => {
       expect.assertions(1);
-      const run = require('../src/cmd/run');
+      const run = require('../src/run');
 
       process.chdir(`${base}/tests/${fixture}`);
       expect(run.runSync('capsula cmd do').toString()).toMatch('uniqe string qwer1234');
     });
     it('should exit with error code if different from 0', () => {
       expect.assertions(1);
-      const run = require('../src/cmd/run');
+      const run = require('../src/run');
 
       process.chdir(`${base}/tests/${fixture}`);
       expect(() => run.runSync('capsula cmd failed')).toThrowError('exit with status 1');

@@ -2,7 +2,7 @@
 const root = process.cwd();
 const path = require('path');
 process.env.CAPSULA_SKIP_CLI_START = true;
-const capsula = require('../src/cmd/cli');
+const capsula = require('../src/cli');
 process.env.CAPSULA_SKIP_CLI_START = false;
 
 process.chdir(path.resolve(__dirname, './fixture'));
