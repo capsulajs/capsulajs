@@ -1,6 +1,7 @@
 /*global jest*/
 const fs = require('fs');
 const base = require('path').resolve(__dirname, '../');
+const path = require('path');
 
 /**
  * NOTE
@@ -15,7 +16,7 @@ const base = require('path').resolve(__dirname, '../');
  */
 
 describe('Capsula cli test suite 1', () => {
-  describe.each([['fixture'], ['lerna']])('testing fixtures', (fixture) => {
+  describe.each([['fixture'], ['lerna']])('testing %j', (fixture) => {
     process.chdir(`${base}/tests/${fixture}`);
 
     if (!fs.existsSync('./node_modules/.bin/cmd')) {
@@ -26,9 +27,8 @@ describe('Capsula cli test suite 1', () => {
         fs.mkdirSync('./node_modules/.bin');
       }
       try {
-        fs.symlinkSync('../src/cli.js', './node_modules/.bin/cmd');
+        fs.symlinkSync(path.resolve('../../src/cli.js'), path.resolve('./node_modules/.bin/capsula'));
       } catch (e) {
-
       }
     }
     it('cmd should be found', (done) => {
@@ -36,8 +36,8 @@ describe('Capsula cli test suite 1', () => {
       const run = require('../src/run');
 
       process.chdir(`${base}/tests/${fixture}`);
-      expect(() => run.runSync('cmd')).toThrowError(
-        'Command failed: cmd\nusage: capsula cmd [command] [args]\n'
+      expect(() => run.runSync('capsula')).toThrowError(
+        'Command failed: capsula\nusage: capsula cmd [command] [args]\n'
       );
 
       done();

@@ -43,7 +43,7 @@ describe('Capsula test suite', () => {
     process.argv = ['path', 'capsula', 'cmd', 'and'];
     const log = jest.spyOn(global.console, 'log');
     log.mockClear();
-    process.chdir(path.join(root, 'tests/fixture'));
+    process.chdir(path.join(root, 'packages/cmd/tests/fixture'));
     capsula.start();
 
     setTimeout(() => {
@@ -55,7 +55,7 @@ describe('Capsula test suite', () => {
     process.argv = ['path', 'capsula', 'cmd', 'pwd'];
     const log = jest.spyOn(global.console, 'log');
     log.mockClear();
-    process.chdir(path.join(root, 'tests/fixture/packages/pkg1'));
+    process.chdir(path.join(root, 'packages/cmd/tests/fixture/packages/pkg1'));
     capsula.start();
 
     setTimeout(() => {

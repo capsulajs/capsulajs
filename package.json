@@ -26,5 +26,8 @@
     "parcel": "^1.12.3",
     "rimraf": "^2.6.3",
     "ts-jest": "^24.0.2"
+  },
+  "dependencies": {
+    "lerna": "^3.14.0"
   }
 }
