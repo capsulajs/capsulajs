@@ -1,3 +1,4 @@
+debugger;
 console.log(window);
 function reportData(callee, data) {
     var event = new CustomEvent('report', {
@@ -8,7 +9,6 @@ function reportData(callee, data) {
     });
     window.dispatchEvent(event);
 }
-capsula.data = "hey";
 // global
 reportData("global", capsula.data);
 // function

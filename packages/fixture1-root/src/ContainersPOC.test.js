@@ -32,6 +32,7 @@ export default () => describe("Feature: Containers POC", () => {
                     resolve();
                 }
             });
+
             capsula.start({
                 name: "@capsulajs/fixture1-shared-data",
                 version: "1.0.0",
@@ -39,6 +40,7 @@ export default () => describe("Feature: Containers POC", () => {
                     data: "hello"
                 }
             });
+
             if( capsula.data === "hello" ){
                 reject();
             }

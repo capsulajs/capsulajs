@@ -1,0 +1,13 @@
+{
+  "name": "sitePrj",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "parcel build --public-url . ./src/index.html --out-dir ../public/dist",
+    "start": "parcel watch --public-url . ./src/index.html --out-dir ../public/dist"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.11.0"
+  }
+}

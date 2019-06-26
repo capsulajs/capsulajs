@@ -1,4 +1,4 @@
-import '@capsulajs/containers/src/index';
+import '@capsulajs/containers';
 import ContainersPOC from './ContainersPOC.test';
 
 mocha.setup({

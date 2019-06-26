@@ -1,14 +1,20 @@
+import {upgradeElement} from '@ampproject/worker-dom/dist/index.mjs';
+
 const lock = {};
 function loadScript(url) {
-    const promise = new Promise((resolve, reject) => {
-        const scriptTag = document.createElement('script');
-        scriptTag.onerror = () => reject(new Error(`failed ${url}`));
-        scriptTag.onload = resolve;
-        scriptTag.async = true;
-        scriptTag.src = url + "#uuid=" + Date.now() + '-' + Math.random();
-        document.head.appendChild(scriptTag);
-    });
-    return promise;
+    const uuid = Date.now() + '-' + Math.random();
+    //const promise = new Promise((resolve, reject) => {
+        const scriptTag = document.createElement('div');
+        //scriptTag.onerror = () => reject(new Error(`failed ${url}`));
+        //scriptTag.async = true;
+
+        scriptTag.setAttribute('src', url + "#uuid=" + uuid);
+        scriptTag.id = uuid;
+        //scriptTag.onload = resolve;
+        document.body.appendChild(scriptTag);
+        return  upgradeElement(document.getElementById(uuid), 'worker.js');
+    //});
+    //return promise;
 }
 
 export function start(options){

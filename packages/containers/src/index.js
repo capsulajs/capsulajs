@@ -9,7 +9,7 @@ window['capsula'] = {
                 version,
                 baseUrl: '../packages',
                 main: 'index.js',
-                cb: () => resolve(name, version, "")(shared)
+                // cb: () => resolve(name, version, "")(shared)
             });
     }
 }

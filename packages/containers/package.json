@@ -6,22 +6,23 @@
   "homepage": "https://github.com/capsulajs/capsulajs#readme",
   "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "build": "parcel src/index.js build --out-dir lib"
   },
-  "main": "lib/core.js",
+  "main": "lib/index.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/capsulajs/capsulajs.git"
-  },
+  "repository": "git+https://github.com/capsulajs/capsulajs.git",
   "bugs": {
     "url": "https://github.com/capsulajs/capsulajs/issues"
   },
   "devDependencies": {
     "@capsulajs/cli": "^0.0.0",
     "parcel-bundler": "^1.11.0"
-  }
+  },
+  "dependencies": {
+    "@ampproject/worker-dom": "^0.10.0"
+  },
+  "private": false
 }

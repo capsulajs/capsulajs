@@ -1,0 +1,23 @@
+{
+  "name": "capsulajs",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "parcel build src/capsula/index.js --out-dir dist",
+    "start": "parcel watch src/capsula/index.js --out-dir dist"
+  },
+  "bin": {
+    "capsulax": "src/cli/capsula.js"
+  },
+  "description": "CapsulaJS",
+  "main": "dist/index.js",
+  "repository": "git@github.com:capsulajs/capsulajs.git",
+  "author": "Idan Levin <idan@ilt.co.il>",
+  "license": "MIT",
+  "private": false,
+  "capsulaDependecies": {
+
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.11.0"
+  }
+}
