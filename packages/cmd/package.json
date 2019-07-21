@@ -1,0 +1,7 @@
+{
+  "name": "cmd",
+  "version": "0.0.1",
+  "bin": {
+    "capsula": "./src/cli.js"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "pkg1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "do": "capsula cmd uniqe",
+    "uniqe": "echo \"uniqe string qwer1234\"",
+    "and": "echo \"cmd1\" && echo \"cmd2\"",
+    "failed": "true"
+  }
+}
