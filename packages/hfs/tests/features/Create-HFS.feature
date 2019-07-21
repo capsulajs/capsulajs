@@ -26,16 +26,16 @@ Feature: Create HFS
     # this cover this 2 scenarios
     Given files a.js, b.js and c.js
     When Calling create with stream "^-a-b-c-$"
-      | a | { path: "a.js", content: a.js, required: true }
-      | b | { path: "b.js", content: b.js }
-      | c | { path: "c.js", content: c.js }
+      | a | { path: "a.js", content: a.js, required: true } |
+      | b | { path: "b.js", content: b.js } |
+      | c | { path: "c.js", content: c.js } |
     And saving the output of create
     Then Running the outputted version of a.js it should alert "abc are 1, 1, 2"
 
   Scenario: Source file import unknown file, error "dependency is not found" should be emit
     Given c.js
     When calling create with stream "^-c-$"
-      | c | { path: "c.js", content: c.js, required: true }
+      | c | { path: "c.js", content: c.js, required: true } |
     Then create return a stream "!'dependency ./b.js is not found'"
 
   Scenario: File that isn't flag with required and not import form required file should not output
@@ -47,17 +47,17 @@ Feature: Create HFS
   Scenario: When source files have circular dependency, HFS should be created with working application # we might drop this from this impl
     Given files a.js, b.js and c.js
     When Calling create with stream "^-a-b-c-$"
-      | a | { path: "a.js", content: "import { b } from './b.js'; alert"b);export const a = "a";, required: true }
-      | b | { path: "b.js", content: "import { b } from './a.js'; alert(a);export const b = "b";" }
+      | a | { path: "a.js", content: "import { b } from './b.js'; alert"b);export const a = "a";, required: true } |
+      | b | { path: "b.js", content: "import { b } from './a.js'; alert(a);export const b = "b";" } |
     And saving the output of create
     Then Running the outputted version of a.js it should alert "a" and "b"
 
   Scenario: Deploying modified application on top of the old version, both version should work
     Given files a.js, b.js and c.js
     And Calling create with stream "^-a-b-c-$"
-      | a | { path: "a.js", content: a.js, required: true }
-      | b | { path: "b.js", content: b.js }
-      | c | { path: "c.js", content: c.js }
+      | a | { path: "a.js", content: a.js, required: true } |
+      | b | { path: "b.js", content: b.js } |
+      | c | { path: "c.js", content: c.js } |
     And saving the output of create
     When File a.js -> const a = 1 is changed to 2
     And running create and saving out put on top of previous output
@@ -69,13 +69,13 @@ Feature: Create HFS
     # this cover this 2 scenarios
     Given files a.js, b.js and c.js
     When Calling create with stream "^-a-b-c-$"
-      | a | { path: "a.js", content: a.js, required: true }
-      | b | { path: "b.js", content: b.js }
-      | c | { path: "c.js", content: c.js }
+      | a | { path: "a.js", content: a.js, required: true } |
+      | b | { path: "b.js", content: b.js } |
+      | c | { path: "c.js", content: c.js } |
     And saving the output of create
     And Calling create with stream "^-d-b-"
-      | d | { path: "d.js", content: "import {b} from './b'; alert(b);", required: true }
-      | b | { path: "b.js", content: b.js }
+      | d | { path: "d.js", content: "import {b} from './b'; alert(b);", required: true } |
+      | b | { path: "b.js", content: b.js } |
     And saving the output of create
     Then Running the outputted version of a.js it should alert "abc are 1, 1, 2"
     And Running the outputted version of d.js it should alert "1"
