@@ -1,0 +1,13 @@
+{
+  "name": "capsulajs",
+  "version": "0.0.1",
+  "description": "CapsulaJS",
+  "main": "index.js",
+  "repository": "git@github.com:capsulajs/capsulajs.git",
+  "author": "IdanILT",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^3.16.1"
+  }
+}
