@@ -1,0 +1,29 @@
+{
+  "name": "hfs",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "IdanILT <idan@ilt.co.il>",
+  "homepage": "https://github.com/capsulajs/capsulajs#readme",
+  "license": "MIT",
+  "main": "lib/hfs.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.yarnpkg.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/capsulajs/capsulajs.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/capsulajs/capsulajs/issues"
+  }
+}
