@@ -1,13 +1,18 @@
 {
-  "name": "capsulajs",
+  "name": "@capsulajs/capsulajs",
   "version": "0.0.1",
-  "description": "CapsulaJS",
+  "description": "A set of utility tool to manage CapsulaJS environment",
   "main": "index.js",
   "repository": "git@github.com:capsulajs/capsulajs.git",
-  "author": "IdanILT",
+  "author": "CapsulaJS",
   "license": "MIT",
   "private": true,
+  "keywords": ["capsulajs"],
   "devDependencies": {
     "lerna": "^3.16.1"
   }
+  "bugs": {
+    "url": "https://github.com/capsulajs/capsulajs/issues"
+  },
+  "homepage": "https://github.com/capsulajs/capsulajs"
 }
