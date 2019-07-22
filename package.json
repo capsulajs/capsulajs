@@ -12,7 +12,7 @@
     "build": "lerna run build --stream --parallel",
     "lint": "lerna run lint --stream --parallel",
     "test": "exit",
-    "bootsrap": "lerna bootstrap"
+    "bootstrap": "lerna bootstrap"
   },
   "devDependencies": {
     "lerna": "^3.16.1"
