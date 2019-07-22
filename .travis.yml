@@ -13,9 +13,6 @@ cache:
   directories:
     - '$HOME/.npm'
 
-before_install:
-  - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > ~/.npmrc
-
 install:
   - yarn install --production=false
 
