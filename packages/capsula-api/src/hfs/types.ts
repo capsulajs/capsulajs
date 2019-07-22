@@ -29,15 +29,16 @@ interface _source {
 /**
  * @interface HFSFile resenting file in HFS file system
  */
-type HFSFile = File & _source;
+export type HFSFile = File & _source;
 
 interface Observable<T> {
+    subscribe: ((item:T) => void);
 }
 
 /**
  * @interface HFS
  */
-interface HFS {
+export interface HFS {
     /**
      * @method create get files process them to HFS and output them as an abservable
      * possibles errors:

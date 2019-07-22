@@ -8,6 +8,10 @@
   "license": "MIT",
   "private": true,
   "keywords": ["capsulajs"],
+  "scripts": {
+    "build": "lerna run build",
+    "boostrap": "lerna bootstrap"
+  },
   "devDependencies": {
     "lerna": "^3.16.1"
   },
