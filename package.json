@@ -9,7 +9,9 @@
   "private": true,
   "keywords": ["capsulajs"],
   "scripts": {
-    "build": "lerna run build",
+    "build": "lerna run build --stream --parallel",
+    "lint": "lerna run lint --stream --parallel",
+    "test": "exit",
     "boostrap": "lerna bootstrap"
   },
   "devDependencies": {

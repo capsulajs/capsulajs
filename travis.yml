@@ -1,0 +1,32 @@
+sudo: true
+language: node_js
+node_js:
+  - '10'
+
+branches:
+  only:
+    - /.*/
+
+# Keep the npm cache around to speed up installs
+cache:
+  npm: true
+  directories:
+    - '$HOME/.npm'
+
+before_install:
+  - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > ~/.npmrc
+
+install:
+  - yarn install --production=false
+
+before_script:
+  - yarn bootstrap
+
+script:
+  - yarn lint
+  - yarn build
+  - yarn test
+
+notifications:
+  email:
+    on_failure: always

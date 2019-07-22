@@ -20,12 +20,15 @@
     "url": "git+https://github.com/capsulajs/capsulajs.git"
   },
   "scripts": {
-    "build": "rimraf lib && tsc"
+    "build": "rimraf lib && tsc",
+    "lint": "tslint '{src,tests}/**/*.{ts,tsx}' --fix"
   },
   "bugs": {
     "url": "https://github.com/capsulajs/capsulajs/issues"
   },
   "devDependencies": {
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.5.3"
   }
 }

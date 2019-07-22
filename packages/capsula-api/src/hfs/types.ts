@@ -19,17 +19,13 @@ export interface File {
      */
     required?:boolean;
 }
-interface _source {
-    /*
-     * @param source array with all the original file paths
-     * You may have 2 or more files with the same content in different paths, those will resolve as 1 file
-     */
-    source:string[];
-}
 /**
  * @interface HFSFile resenting file in HFS file system
+ *
+ * @param source array with all the original file paths
+ * You may have 2 or more files with the same content in different paths, those will resolve as 1 file
  */
-export type HFSFile = File & _source;
+export type HFSFile = File & { source:string[] };
 
 interface Observable<T> {
     subscribe: ((item:T) => void);
