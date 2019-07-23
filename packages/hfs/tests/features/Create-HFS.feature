@@ -41,12 +41,12 @@ Feature: Create HFS
   Scenario: File that isn't flag with required and not import form required file should not output
     Given c.js
     When calling create with stream "^-c-$"
-      | c | { path: "b.js", content: b.js }
+      | c | { path: "b.js", content: b.js } |
     Then create return a stream "^-$"
     # drop this if it's required efforts
   Scenario: When source files have circular dependency, HFS should be created with working application # we might drop this from this impl
     Given files a.js, b.js and c.js
-    When Calling create with stream "^-a-b-c-$"
+    When Calling create with stream "^-a-b-$"
       | a | { path: "a.js", content: "import { b } from './b.js'; alert"b);export const a = "a";, required: true } |
       | b | { path: "b.js", content: "import { b } from './a.js'; alert(a);export const b = "b";" } |
     And saving the output of create
