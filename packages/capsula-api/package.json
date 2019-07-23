@@ -1,0 +1,34 @@
+{
+  "name": "@capsulajs/capsula-api",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "IdanILT <idan@ilt.co.il>",
+  "homepage": "https://github.com/capsulajs/capsulajs/tree/master/packages/capsula-api#readme",
+  "license": "MIT",
+  "types": "lib/index.d.ts",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.yarnpkg.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/capsulajs/capsulajs.git"
+  },
+  "scripts": {
+    "build": "rimraf lib && tsc",
+    "lint": "tslint '{src,tests}/**/*.{ts,tsx}' --fix"
+  },
+  "bugs": {
+    "url": "https://github.com/capsulajs/capsulajs/issues"
+  },
+  "devDependencies": {
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.5.3"
+  }
+}

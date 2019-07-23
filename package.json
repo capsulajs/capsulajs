@@ -8,9 +8,15 @@
   "license": "MIT",
   "private": true,
   "keywords": ["capsulajs"],
+  "scripts": {
+    "build": "lerna run build --stream --parallel",
+    "lint": "lerna run lint --stream --parallel",
+    "test": "exit",
+    "bootstrap": "lerna bootstrap"
+  },
   "devDependencies": {
     "lerna": "^3.16.1"
-  }
+  },
   "bugs": {
     "url": "https://github.com/capsulajs/capsulajs/issues"
   },
