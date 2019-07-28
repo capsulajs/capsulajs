@@ -21,16 +21,7 @@ Feature: Create HFS
   ```
   #__________________________________END File For test________________________________________
 
-  Scenario: File that isn't flag with required should output if some file import it
-  Scenario: Application made from 3 source files should work from the HFS output
-    # this cover this 2 scenarios
-    Given files a.js, b.js and c.js
-    When Calling create with stream "^-a-b-c-$"
-      | a | { path: "a.js", content: a.js, required: true } |
-      | b | { path: "b.js", content: b.js } |
-      | c | { path: "c.js", content: c.js } |
-    And saving the output of create
-    Then Running the outputted version of a.js it should alert "abc are 1, 1, 2"
+
 
   Scenario: Source file import unknown file, error "dependency is not found" should be emit
     Given c.js

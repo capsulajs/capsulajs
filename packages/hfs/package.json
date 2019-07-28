@@ -13,6 +13,20 @@
   "files": [
     "lib"
   ],
+  "jest": {
+    "testRegex": "(/__tests__/.*|\\.(test|spec|steps))\\.(ts|tsx|js)$",
+    "transform": {
+      ".(ts)": "ts-jest",
+      ".(js)": "babel-jest"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "ts"
+    ],
+    "moduleDirectories": [
+      "node_modules"
+    ]
+  },
   "publishConfig": {
     "registry": "https://registry.yarnpkg.com"
   },
@@ -21,9 +35,21 @@
     "url": "git+https://github.com/capsulajs/capsulajs.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "jest --maxWorkers=4"
   },
   "bugs": {
     "url": "https://github.com/capsulajs/capsulajs/issues"
+  },
+  "dependencies": {
+    "@capsulajs/capsula-api": "^0.0.0",
+    "@types/jest": "^24.0.15",
+    "jest": "^24.8.0",
+    "rxjs": "^6.5.2",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.3"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.5.5",
+    "babel-jest": "^24.8.0"
   }
 }

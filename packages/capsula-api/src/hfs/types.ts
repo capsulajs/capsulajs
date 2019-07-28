@@ -25,10 +25,20 @@ export interface File {
  * @param source array with all the original file paths
  * You may have 2 or more files with the same content in different paths, those will resolve as 1 file
  */
-export type HFSFile = File & { source:string[] };
+export interface HFSFile extends File{
+    source:string[];
+};
 
 interface Observable<T> {
-    subscribe: ((item:T) => void);
+    subscribe(observer?: any): any;
+    /** @deprecated Use an observer instead of a complete callback */
+    subscribe(next: null | undefined, error: null | undefined, complete: () => void): any;
+    /** @deprecated Use an observer instead of an error callback */
+    subscribe(next: null | undefined, error: (error: any) => void, complete?: () => void): any;
+    /** @deprecated Use an observer instead of a complete callback */
+    subscribe(next: (value: T) => void, error: null | undefined, complete: () => void): any;
+    subscribe(next?: (value: T) => void, error?: (error: any) => void, complete?: () => void): any;
+
 }
 
 /**
