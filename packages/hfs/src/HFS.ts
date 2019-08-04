@@ -68,10 +68,10 @@ export class HFS implements hfs.HFS {
                 let head = "";
                 let body = "";
                 const parseDep = (mod) => {
+                    if (links[mod] === undefined) throw `dependency ${mod} is not found`;
                     if (links[mod].processed) return;
                     let dep = "";
                     for (let d in links[mod].dep) {
-                        // has deppendencies
                         parseDep(d + ".js");
 
                         dep = dep ?

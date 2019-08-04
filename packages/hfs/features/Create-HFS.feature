@@ -23,17 +23,9 @@ Feature: Create HFS
 
 
 
-  Scenario: Source file import unknown file, error "dependency is not found" should be emit
-    Given c.js
-    When calling create with stream "^-c-$"
-      | c | { path: "c.js", content: c.js, required: true } |
-    Then create return a stream "!'dependency ./b.js is not found'"
 
-  Scenario: File that isn't flag with required and not import form required file should not output
-    Given c.js
-    When calling create with stream "^-c-$"
-      | c | { path: "b.js", content: b.js } |
-    Then create return a stream "^-$"
+
+
     # drop this if it's required efforts
   Scenario: When source files have circular dependency, HFS should be created with working application # we might drop this from this impl
     Given files a.js, b.js and c.js
