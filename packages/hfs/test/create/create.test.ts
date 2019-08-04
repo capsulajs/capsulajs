@@ -90,7 +90,7 @@ export const c = 1 + b;
         fs.create(from(input))
             .subscribe(
                 (f: any) => output.push(f),
-                ()=>{},
+                (e)=>{ throw e},
                 ()=>{
                     save(output);
                     output.forEach((f:any) => f.source[0] === "./a.js" && run("./" + npath.join('./tmp', f.path)) );
