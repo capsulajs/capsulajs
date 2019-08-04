@@ -35,32 +35,6 @@ Feature: Create HFS
     And saving the output of create
     Then Running the outputted version of a.js it should alert "a" and "b"
 
-  Scenario: Deploying modified application on top of the old version, both version should work
-    Given files a.js, b.js and c.js
-    And Calling create with stream "^-a-b-c-$"
-      | a | { path: "a.js", content: a.js, required: true } |
-      | b | { path: "b.js", content: b.js } |
-      | c | { path: "c.js", content: c.js } |
-    And saving the output of create
-    When File a.js -> const a = 1 is changed to 2
-    And running create and saving out put on top of previous output
-    Then Running the outputted version of old a.js it should alert "abc are 1, 1, 2"
-    And  Running the outputted version of new a.js it should alert "abc are 2, 1, 2"
 
-  Scenario: Deploying 2 applications with common files, the common files should be the same
-  Scenario: Deploying 2 applications to the same location both application should work
-    # this cover this 2 scenarios
-    Given files a.js, b.js and c.js
-    When Calling create with stream "^-a-b-c-$"
-      | a | { path: "a.js", content: a.js, required: true } |
-      | b | { path: "b.js", content: b.js } |
-      | c | { path: "c.js", content: c.js } |
-    And saving the output of create
-    And Calling create with stream "^-d-b-"
-      | d | { path: "d.js", content: "import {b} from './b'; alert(b);", required: true } |
-      | b | { path: "b.js", content: b.js } |
-    And saving the output of create
-    Then Running the outputted version of a.js it should alert "abc are 1, 1, 2"
-    And Running the outputted version of d.js it should alert "1"
-    And output for b.js should be the same for both create iterations
+
 

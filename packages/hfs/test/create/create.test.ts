@@ -246,4 +246,90 @@ alert(\`abc are \${a}, \${b}, \${c}\`);`
 
 
     });
+
+    test(`  Scenario: Deploying 2 applications with common files, the common files should be the same
+  Scenario: Deploying 2 applications to the same location both application should work
+    # this cover this 2 scenarios
+    Given files a.js, b.js and c.js
+    When Calling create with stream "^-a-b-c-$"
+      | a | { path: "a.js", content: a.js, required: true } |
+      | b | { path: "b.js", content: b.js } |
+      | c | { path: "c.js", content: c.js } |
+    And saving the output of create
+    And Calling create with stream "^-d-b-"
+      | d | { path: "d.js", content: "import {b} from './b'; alert(b);", required: true } |
+      | b | { path: "b.js", content: b.js } |
+    And saving the output of create
+    Then Running the outputted version of a.js it should alert "abc are 1, 1, 2"
+    And Running the outputted version of d.js it should alert "1"
+    And output for b.js should be the same for both create iterations`, (done) => {
+        expect.assertions(2);
+        const fs = new HFS();
+
+        const input1: hfs.File[] = [
+            {
+                path: './a.js',
+                content: files["./a.js"]
+            },
+            {
+                path: './b.js',
+                content: files["./b.js"]
+            },
+            {
+                path: './c.js',
+                content: files["./c.js"]
+            },
+        ]
+        const output1: any = [];
+
+        fs.create(from(input1))
+            .subscribe(
+                (f: any) => output1.push(f),
+                (e)=>{ throw e},
+                ()=>{
+                    save(output1);
+
+                }
+            );
+        const input2: hfs.File[] = [
+            {
+                path: './d.js',
+                content: `import {b} from './b'; alert(b);`
+            },
+            {
+                path: './b.js',
+                content: files["./b.js"]
+            }
+        ]
+        const output2: any = [];
+
+        fs.create(from(input2))
+            .subscribe(
+                (f: any) => output2.push(f),
+                (e)=>{ throw e},
+                ()=>{
+                    save(output2, false);
+
+                    (global as any).alert = (msg) => {
+                        expect(msg).toBe("abc are 1, 1, 2");
+                        (global as any).alert = (msg) => {
+                            expect(msg).toBe(1);
+                            done();
+                        };
+
+                        output2.forEach((f:any) => f.source[0] === "./d.js" && run("./" + npath.join('./tmp', f.path)) );
+                    };
+
+                    output1.forEach((f:any) => f.source[0] === "./a.js" && run("./" + npath.join('./tmp', f.path)) );
+
+
+
+
+                }
+            );
+
+
+
+
+    });
 });
