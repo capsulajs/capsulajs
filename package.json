@@ -8,6 +8,9 @@
   "license": "MIT",
   "private": true,
   "keywords": ["capsulajs"],
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "build": "lerna run build --stream --parallel",
     "lint": "lerna run lint --stream --parallel",

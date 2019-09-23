@@ -42,15 +42,15 @@
   },
   "dependencies": {
     "@capsulajs/capsula-api": "^0.0.0",
-    "@types/jest": "^24.0.15",
-    "jest": "^24.8.0",
     "md5": "^2.2.1",
-    "rxjs": "^6.5.2",
-    "ts-jest": "^24.0.2",
-    "typescript": "^3.5.3"
+    "rxjs": "^6.5.2"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.15",
+    "jest": "^24.8.0",
     "@babel/preset-env": "^7.5.5",
-    "babel-jest": "^24.8.0"
+    "babel-jest": "^24.8.0",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.3"
   }
 }
