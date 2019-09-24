@@ -14,7 +14,7 @@
   "scripts": {
     "build": "lerna run build --stream --parallel",
     "lint": "lerna run lint --stream --parallel",
-    "test": "exit",
+    "test": "lerna run test --stream --parallel",
     "bootstrap": "lerna bootstrap"
   },
   "devDependencies": {
