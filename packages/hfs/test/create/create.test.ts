@@ -2,55 +2,34 @@ import {HFS} from '../../src/HFS';
 import {from} from "rxjs";
 import {hfs} from '@capsulajs/capsula-api';
 import {save, init, run} from "../utils";
-
+import { files, input} from "./mock/create";
 init(__dirname);
 
 describe("Feature HFS Create", () => {
-    /**
-     * Background:
-     */
-    const files: { [key: string]: string } = {
-        "./a.js": `import { b } from "./b";
-import { c } from "./c";
 
-const a = 1;
-alert(\`abc are \${a}, \${b}, \${c}\`);
-`,
-        "./b.js": `export const b = 1
-`,
-        "./c.js": `import { b } from "./b";
-export const c = 1 + b;
-`
-    };
-    const input: hfs.File[] = [
-        {
-            path: './a.js',
-            content: files["./a.js"],
-            required: true
-        },
-        {
-            path: './b.js',
-            content: files["./b.js"]
-        },
-        {
-            path: './c.js',
-            content: files["./c.js"]
-        },
-    ];
+    /**
+     * Feature: Create HFS
+     * Background:
+     *     Given a.js
+     *     And b.js
+     *     And c.js
+     *     (defined in ./mock/create)
+     *     Aan
+     */
+
     const output: any = [];
     const fs = new HFS();
-    /**
-     * __________________________________End background________________________________________
-     */
+
     beforeEach(() => {
         jest.resetModules();
         while (output.length) {
             output.pop();
-        }
-        ;
+        };
     });
     test(`
+            #1
             Scenario: File that isn't flag with required should output if some file import it
+            #2
             Scenario: Application made from 3 source files should work from the HFS output
                 # this cover this 2 scenarios
                 Given files a.js, b.js and c.js
@@ -79,6 +58,7 @@ export const c = 1 + b;
         };
     });
     test(`
+            #3
             Scenario: Dynamic imports
                 Given files ad.js, b.js and c.js
                 When Calling create with stream "^-a-b-c-$"
@@ -102,7 +82,6 @@ c.then(({c}) => alert(\`abc are $\{a\}, $\{b\}, $\{c\}\`));
 `
         };
 
-
         fs.create(from(input1))
             .subscribe(
                 (f: any) => output.push(f),
@@ -122,6 +101,7 @@ c.then(({c}) => alert(\`abc are $\{a\}, $\{b\}, $\{c\}\`));
     });
 
     test(`
+        #4
         Scenario: Source file import unknown file, error "dependency is not found" should be emit
             Given c.js
             When calling create with stream "^-c-$"
@@ -145,11 +125,14 @@ c.then(({c}) => alert(\`abc are $\{a\}, $\{b\}, $\{c\}\`));
                 }
             );
     });
-    test(`Scenario: File that isn't flag with required and not import form required file should not output
-    Given c.js
-    When calling create with stream "^-c-$"
-      | c | { path: "b.js", content: b.js } |
-    Then create return a stream "^-$"`, (done) => {
+    test(`
+        #5
+            Scenario: File that isn't flag with required and not import form required file should not output
+            Given c.js
+            When calling create with stream "^-c-$"
+              | c | { path: "b.js", content: b.js } |
+            Then create return a stream "^-$"
+            `, (done) => {
         expect.assertions(1);
         const input: hfs.File[] = [
             {
@@ -173,6 +156,7 @@ c.then(({c}) => alert(\`abc are $\{a\}, $\{b\}, $\{c\}\`));
             );
     });
     test(`
+        #6
         Scenario: Deploying modified application on top of the old version, both version should work
             Given files a.js, b.js and c.js
                 And Calling create with stream "^-a-b-c-$"
@@ -186,7 +170,6 @@ c.then(({c}) => alert(\`abc are $\{a\}, $\{b\}, $\{c\}\`));
                 And  Running the outputted version of new a.js it should alert "abc are 2, 1, 2"
     `, (done) => {
         expect.assertions(4);
-
 
         const input1: hfs.File[] = [ ...input ];
         const input2: hfs.File[] = [ ...input ];
@@ -214,7 +197,6 @@ alert(\`abc are \${a}, \${b}, \${c}\`);`
 
                 }
             );
-
         fs.create(from(input2))
             .subscribe(
                 (f: any) => output2.push(f),
@@ -223,8 +205,6 @@ alert(\`abc are \${a}, \${b}, \${c}\`);`
                 },
                 () => {
                     save(output2, false);
-
-
                     // check "b" is the same
                     const out1 = {};
                     output1.forEach(i => out1[i.path] = i.content);
@@ -236,17 +216,11 @@ alert(\`abc are \${a}, \${b}, \${c}\`);`
                             expect(msg).toBe("abc are 2, 1, 2");
                             done();
                         };
-
                         output2.forEach((f: any) => f.source[0] === "./a.js" && run(f.path));
                     };
-
                     output1.forEach((f: any) => f.source[0] === "./a.js" && run(f.path));
-
-
                 }
             );
-
-
     });
 
     test(`

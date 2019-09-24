@@ -232,21 +232,6 @@ function getModuleMetadata(
                 target: data.name
             });
             child.replaceWith(ast);
-            //child.replaceWithSourceString(`const ${imp.id.name} = ${data.name}();`);
-            //const importName = imp.init.arguments[0].value;
-            // const importName = "default";
-            // const localName = imp.id.name;
-
-            /*data.imports.set(localName, importName);
-
-            const reexport = localData.get(localName);
-            if (reexport) {
-                localData.delete(localName);
-// @ts-ignore
-                reexport.names.forEach(name => {
-                    data.reexports.set(name, importName);
-                });
-            }*/
         } else if (child.isExportAllDeclaration()) {
             hasExports = true;
             const data = getData(child.node.source);
