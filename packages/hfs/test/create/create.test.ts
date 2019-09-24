@@ -25,7 +25,8 @@ export const c = 1 + b;
     const input: hfs.File[] = [
         {
             path: './a.js',
-            content: files["./a.js"]
+            content: files["./a.js"],
+            required: true
         },
         {
             path: './b.js',
@@ -41,7 +42,6 @@ export const c = 1 + b;
     /**
      * __________________________________End background________________________________________
      */
-
     beforeEach(() => {
         jest.resetModules();
         while (output.length) {
@@ -49,7 +49,6 @@ export const c = 1 + b;
         }
         ;
     });
-
     test(`
             Scenario: File that isn't flag with required should output if some file import it
             Scenario: Application made from 3 source files should work from the HFS output
@@ -63,8 +62,6 @@ export const c = 1 + b;
                 Then Running the outputted version of a.js it should alert "abc are 1, 1, 2"
     `, (done) => {
         expect.assertions(1);
-
-
         fs.create(from(input))
             .subscribe(
                 (f: any) => output.push(f),
@@ -76,14 +73,11 @@ export const c = 1 + b;
                     output.forEach((f: any) => f.source[0] === "./a.js" && run(f.path));
                 }
             );
-
         (global as any).alert = (msg) => {
             expect(msg).toBe("abc are 1, 1, 2");
             done();
         };
     });
-
-
     test(`
             Scenario: Dynamic imports
                 Given files ad.js, b.js and c.js
@@ -135,7 +129,8 @@ c.then(({c}) => alert(\`abc are $\{a\}, $\{b\}, $\{c\}\`));
             Then create return a stream "!'dependency ./b.js is not found'"
     `, (done) => {
         expect.assertions(1);
-        const localInput: hfs.File[] = [input[2]];
+        const localInput: hfs.File[] = [{...input[2]}];
+        localInput[0].required = true;
 
         fs.create(from(localInput))
             .subscribe(
@@ -150,12 +145,11 @@ c.then(({c}) => alert(\`abc are $\{a\}, $\{b\}, $\{c\}\`));
                 }
             );
     });
-    /*test(`Scenario: File that isn't flag with required and not import form required file should not output
+    test(`Scenario: File that isn't flag with required and not import form required file should not output
     Given c.js
     When calling create with stream "^-c-$"
       | c | { path: "b.js", content: b.js } |
     Then create return a stream "^-$"`, (done) => {
-        throw "not implemented";
         expect.assertions(1);
         const input: hfs.File[] = [
             {
@@ -170,15 +164,14 @@ c.then(({c}) => alert(\`abc are $\{a\}, $\{b\}, $\{c\}\`));
                     expect(true).toBe("observable shouldn't emit")
                 },
                 (e)=>{
-
-
+                    expect(e).toBe("observable shouldn't error")
                 },
                 ()=>{
                     expect(true).toBe(true);
                     done();
                 }
             );
-    });*/
+    });
     test(`
         Scenario: Deploying modified application on top of the old version, both version should work
             Given files a.js, b.js and c.js
@@ -292,6 +285,7 @@ alert(\`abc are \${a}, \${b}, \${c}\`);`
             );
         const input2: hfs.File[] = [
             {
+                required: true,
                 path: './d.js',
                 content: `import {b} from './b'; alert(b);`
             },
