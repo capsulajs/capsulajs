@@ -35,7 +35,8 @@
     "url": "git+https://github.com/capsulajs/capsulajs.git"
   },
   "scripts": {
-    "test": "jest --maxWorkers=4"
+    "test": "jest --maxWorkers=4",
+    "lint": "tslint -p tsconfig.json"
   },
   "bugs": {
     "url": "https://github.com/capsulajs/capsulajs/issues"
@@ -46,11 +47,14 @@
     "rxjs": "^6.5.2"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.15",
-    "jest": "^24.8.0",
     "@babel/preset-env": "^7.5.5",
+    "@types/jest": "^24.0.15",
     "babel-jest": "^24.8.0",
+    "jest": "^24.8.0",
+    "remark-preset-lint-recommended": "^3.0.3",
     "ts-jest": "^24.0.2",
+    "tslint": "^5.20.0",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.5.3"
   }
 }
