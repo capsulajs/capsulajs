@@ -21,7 +21,7 @@
   },
   "scripts": {
     "build": "rimraf lib && tsc",
-    "lint": "tslint '{src,tests}/**/*.{ts,tsx}' --fix"
+    "lint": "tslint -p tsconfig.json"
   },
   "bugs": {
     "url": "https://github.com/capsulajs/capsulajs/issues"

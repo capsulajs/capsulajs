@@ -8,7 +8,7 @@ const tmpl = (arg, code) => `export default (obj) => {
     let exports = {};
 ${code}
     return exports;
-} 
+}
 `;
 const args = (info) => {
   let ret = '';
