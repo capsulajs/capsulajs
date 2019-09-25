@@ -1,5 +1,5 @@
 {
-  "extends": ["tslint:recommended", "tslint-plugin-prettier"],
+  "extends": ["tslint:recommended", "tslint-plugin-prettier", "tslint-config-prettier"],
   "rules": {
     "forin": false,
     "interface-name": false,
