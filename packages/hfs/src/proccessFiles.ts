@@ -10,7 +10,7 @@ ${code}
     return exports;
 }
 `;
-const args = (info) => {
+const destructuringString = (info) => {
   let ret = '';
   info.source.forEach((i) => (ret = ret ? ret + ', ' + i.name : i.name));
   return '{' + ret + '}';
@@ -19,20 +19,26 @@ const args = (info) => {
 const processFiles = (files) =>
   files.pipe(
     map((i: any) => {
-      const stats = { info: {} };
+      let info;
+
       const transform = transformSync(i.content, {
         code: true,
         configFile: false,
-        plugins: ['@babel/plugin-syntax-dynamic-import', babelRemoveImportsGetMeta(stats)],
+        plugins: [
+          '@babel/plugin-syntax-dynamic-import',
+          babelRemoveImportsGetMeta((meta) => {
+            info = meta;
+          }),
+        ],
         parserOpts: {
           sourceType: 'module',
         },
       });
       const code = transform ? transform.code : '';
-      const content = tmpl(args(stats.info), code);
+      const content = tmpl(destructuringString(info), code);
       const deps = {};
       const dyDeps = {};
-      (stats.info as any).source.forEach((v, k) => {
+      (info as any).source.forEach((v, k) => {
         if ((v as any).dynamic) {
           dyDeps[k] = (v as any).name;
         } else {
@@ -42,7 +48,7 @@ const processFiles = (files) =>
       return {
         org: i,
         content,
-        info: stats.info,
+        info,
         path: md5(content) + '.js', // md5sum.digest('hex'),
         link: {
           root: md5(content),

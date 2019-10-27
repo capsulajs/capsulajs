@@ -2,7 +2,7 @@ import { isModule } from '@babel/helper-module-transforms';
 import normalizeAndLoadModuleMetadata from './normalize-and-load-metadata';
 import rewriteLiveReferences from '@babel/helper-module-transforms/lib/rewrite-live-references';
 
-export default (stats) => (babel) => ({
+export default (cb) => (babel) => ({
   visitor: {
     Program: {
       exit(path, state) {
@@ -24,7 +24,7 @@ export default (stats) => (babel) => ({
           esNamespaceOnly: true,
         });
         rewriteLiveReferences(path, meta);
-        stats.info = meta;
+        cb(meta);
       },
     },
   },
