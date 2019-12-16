@@ -13,6 +13,31 @@
   "files": [
     "lib"
   ],
+  "jest": {
+    "testRegex": "(/__tests__/.*|\\.(test|spec|steps))\\.(ts|tsx|js)$",
+    "transform": {
+      ".(ts)": "ts-jest",
+      ".(js)": "babel-jest"
+    },
+    "reporters": [
+      "default",
+      [
+        "jest-html-reporters",
+        {
+          "publicPath": "./html-report",
+          "filename": "report.html",
+          "expand": true
+        }
+      ]
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "ts"
+    ],
+    "moduleDirectories": [
+      "node_modules"
+    ]
+  },
   "publishConfig": {
     "registry": "https://registry.yarnpkg.com"
   },
@@ -21,9 +46,29 @@
     "url": "git+https://github.com/capsulajs/capsulajs.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "jest --maxWorkers=4",
+    "lint": "tslint -p tsconfig.json"
   },
   "bugs": {
     "url": "https://github.com/capsulajs/capsulajs/issues"
+  },
+  "dependencies": {
+    "@capsulajs/capsula-api": "^0.0.0",
+    "md5": "^2.2.1",
+    "rxjs": "^6.5.2"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.5.5",
+    "@types/jest": "^24.0.15",
+    "babel-jest": "^24.8.0",
+    "jest": "^24.8.0",
+    "jest-html-reporter": "^2.7.0",
+    "jest-html-reporters": "^1.2.0",
+    "remark-preset-lint-recommended": "^3.0.3",
+    "ts-jest": "^24.0.2",
+    "tslint": "^5.20.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.5.3"
   }
 }

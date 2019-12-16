@@ -7,15 +7,28 @@
   "author": "CapsulaJS",
   "license": "MIT",
   "private": true,
-  "keywords": ["capsulajs"],
+  "keywords": [
+    "capsulajs"
+  ],
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "build": "lerna run build --stream --parallel",
     "lint": "lerna run lint --stream --parallel",
-    "test": "exit",
+    "test": "lerna run test --stream --parallel",
     "bootstrap": "lerna bootstrap"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
   "devDependencies": {
-    "lerna": "^3.16.1"
+    "husky": "^3.0.5",
+    "lerna": "^3.16.1",
+    "prettier": "^1.18.2",
+    "pretty-quick": "^1.11.1"
   },
   "bugs": {
     "url": "https://github.com/capsulajs/capsulajs/issues"

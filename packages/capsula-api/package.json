@@ -21,14 +21,23 @@
   },
   "scripts": {
     "build": "rimraf lib && tsc",
-    "lint": "tslint '{src,tests}/**/*.{ts,tsx}' --fix"
+    "lint": "tslint -p tsconfig.json"
   },
   "bugs": {
     "url": "https://github.com/capsulajs/capsulajs/issues"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.5.5",
+    "babel-jest": "^24.8.0",
     "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.5.3"
+  },
+  "dependencies": {
+    "@types/jest": "^24.0.15",
+    "jest": "^24.8.0",
+    "rxjs": "^6.5.2",
+    "ts-jest": "^24.0.2",
     "typescript": "^3.5.3"
   }
 }

@@ -4,3 +4,4 @@ dist
 node_modules/
 doc/
 lib/
+/packages/hfs/test/create/tmp/
