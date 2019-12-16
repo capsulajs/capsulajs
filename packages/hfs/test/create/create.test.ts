@@ -126,17 +126,23 @@ c.then(({c}) => alert(\`abc are $\{a\}, $\{b\}, $\{c\}\`));
               | c | { path: "b.js", content: b.js } |
             Then create return a stream "^-$"
             `, (done) => {
-    expect.assertions(1);
+    expect.assertions(3);
     const localInput: hfs.File[] = [
       {
         path: './c.js',
         content: files['./c.js'],
+        required: false,
+      },
+      {
+        path: './b.js',
+        content: files['./b.js'],
+        required: true,
       },
     ];
 
     fs.create(from(localInput)).subscribe(
-      () => {
-        expect(true).toBe("observable shouldn't emit");
+      (f) => {
+        expect(f.source).not.toContain('./c.js');
       },
       (e) => {
         expect(e).toBe("observable shouldn't error");
@@ -212,8 +218,8 @@ alert(\`abc are \${a}, \${b}, \${c}\`);`,
   });
 
   test(`
-        Scenario: Deploying 2 applications with common files, the common files should be the same
-        Scenario: Deploying 2 applications to the same location both application should work
+        #7 Scenario: Deploying 2 applications with common files, the common files should be the same
+        #8 Scenario: Deploying 2 applications to the same location both application should work
             # this cover this 2 scenarios
             Given files a.js, b.js and c.js
             When Calling create with stream "^-a-b-c-$"

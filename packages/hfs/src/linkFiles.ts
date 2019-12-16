@@ -20,17 +20,17 @@ const parseDep = (links, mod, dynamic = false) => {
   }
 
   let dep = '';
-  for (const d in links[mod].dep) {
+  for (const d in links[mod].deps.static) {
     parseDep(links, d + '.js');
     dep = dep
-      ? dep + ', ' + `${links[mod].dep[d]}: __${links[d + '.js'].root}`
-      : `${links[mod].dep[d]}: __${links[d + '.js'].root}`;
+      ? dep + ', ' + `${links[mod].deps.static[d]}: __${links[d + '.js'].root}`
+      : `${links[mod].deps.static[d]}: __${links[d + '.js'].root}`;
   }
-  for (const d in links[mod].dyDep) {
+  for (const d in links[mod].deps.dynamic) {
     parseDep(links, d + '.js', true);
     dep = dep
-      ? dep + ', ' + `${links[mod].dyDep[d]}: __${links[d + '.js'].root}`
-      : `${links[mod].dyDep[d]}: __${links[d + '.js'].root}`;
+      ? dep + ', ' + `${links[mod].deps.dynamic[d]}: __${links[d + '.js'].root}`
+      : `${links[mod].deps.dynamic[d]}: __${links[d + '.js'].root}`;
   }
 
   if (dynamic) {
@@ -59,17 +59,16 @@ const linkFiles = switchMap((files: any[]) =>
         required: !!i.org.required,
         file: i,
       };
-      source.push(i.org.path);
     });
     let content = '';
     const linksCopy = { ...links };
     for (const link in linksCopy) {
       if (linksCopy[link].required) {
+        source.push(link);
         const res = createLinksFile(links, link);
         content += res ? res : '';
       }
     }
-    // const content = createLinksFile(links);
     if (content) {
       obs.next({
         required: true,
